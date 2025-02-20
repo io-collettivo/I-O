@@ -1,23 +1,32 @@
 let canvas;
-let cameraRadius = 1000; // Initial distance from the center
-let cameraAngleX = 0; // Horizontal rotation angle
-let cameraAngleY = 0; // Vertical rotation angle
-let targetAngleX = 0;
-let targetAngleY = 0;
+let cameraRadius = 1000;
+let cameraAngleX = 0; // Initial horizontal angle
+let cameraAngleY = 30; // Initial vertical angle (tilt down slightly)
+let targetAngleX = cameraAngleX; // Initialize targets to current values
+let targetAngleY = cameraAngleY;
 let zoomSpeed = 0.1;
 let targetRadius = cameraRadius;
 let panSpeed = 0.01;
 
 function setup() {
-  canvas = createCanvas(windowWidth, windowHeight, WEBGL);
-  angleMode(DEGREES);
-  strokeWeight(3);
-  noFill();
-  stroke(250, 250, 250);
+    canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+    angleMode(DEGREES);
+    strokeWeight(5);
+    noFill();
+    stroke(250, 250, 250);
+  
+    // Calculate initial camera position to avoid initial blank screen
+    cameraRadius = 1000;
+    let cameraX = cameraRadius * sin(cameraAngleY) * cos(cameraAngleX);
+    let cameraY = cameraRadius * cos(cameraAngleY);
+    let cameraZ = cameraRadius * sin(cameraAngleY) * sin(cameraAngleX);
+    perspective();
+    camera(cameraX, cameraY, cameraZ, 0, 0, 0, 0, 1, 0);
+  
 }
 
 function draw() {
-  background(250, 180, 200);
+  background(0, 0, 0);
 
   // Smooth zooming
   cameraRadius = lerp(cameraRadius, targetRadius, zoomSpeed);
