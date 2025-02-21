@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Hide scrollbars */
+    font-family: sans-serif; /* Choose your font */
+}
+
+#hero-container {
+    position: relative; /* Required for absolute positioning of child elements */
+}
+
+#p5-canvas {
+    /* The canvas will now take up the full size of its container */
+}
+
+#text-content {
+    position: absolute; /* Place text on top of the canvas */
+    top: 20px; /* Adjust top and left positioning as needed */
+    left: 20px;
+    width: 40%; /* Adjust width as needed */
+    padding: 20px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0); /* Semi-transparent background */
+    z-index: 10; /* Ensure text is on top of the canvas */
+}

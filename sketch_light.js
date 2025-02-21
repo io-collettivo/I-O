@@ -10,6 +10,7 @@ let panSpeed = 0.01;
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+    canvas.parent('p5-canvas'); // Important: Add this line!
     angleMode(DEGREES);
     strokeWeight(5);
     noFill();
